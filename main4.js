@@ -1,15 +1,29 @@
-function PostItem(prop) {
-  var urlPic = `images/${prop.img}`;
-  return (
-    <li>
-      <a href="#"><img src={urlPic} alt={prop.img} /></a>
-      <div className="khoiphai">
-        <h2><a href="#">{prop.title}</a></h2>
-        <p>{prop.content}</p>
-      </div>
-      <div className="clr"></div>
-    </li>
-  )
+class PostItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+
+  handleClick(e) {
+    e.preventDefault();
+    this.props.onClickItem(e);
+  }
+
+  render() {
+    var urlPic = `images/${this.props.img}`;
+    return (
+      <li>
+        <a href='#' onClick={(e) => this.handleClick(e)}><img src={urlPic} alt={this.props.img} /></a>
+        <div className="khoiphai">
+          <h2><a href="#">{this.props.title}</a></h2>
+          <p>{this.props.content}</p>
+        </div>
+        <div className="clr"></div>
+      </li>
+    )
+  }
 }
 
 const listNews = [
@@ -36,6 +50,12 @@ const listNews = [
 class AppComponent extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleClickItem = this.handleClickItem.bind(this);
+  }
+
+  handleClickItem(news) {
+    console.log(news);
   }
 
   render() {
@@ -44,20 +64,25 @@ class AppComponent extends React.Component {
       <div className='wrapper'>
         <h1>Trang tin VinaEnter Edu</h1>
         <ul>
-          {this.props.listNews.map(function (news) {
-            return (
-              <PostItem
-                key={news.id}
-                img={news.img}
-                title={news.title}
-                content={news.content}
-              />
-            )
-          })}
+          {this.props.listNews.map(news =>
+            <PostItem
+              key={news.id}
+              img={news.img}
+              title={news.title}
+              content={news.content}
+              onClickItem={() => this.handleClickItem(news)}
+            />
+          )}
         </ul>
       </div>
     )
   }
 }
 
-ReactDOM.render(<AppComponent listNews={listNews} />, document.getElementById("root"))
+// ReactDOM.render(<AppComponent listNews={listNews} />, document.getElementById("root"))
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <AppComponent listNews={listNews} />
+  </React.StrictMode>
+);

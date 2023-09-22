@@ -20,28 +20,42 @@ const listNews = [
 ];
 
 class AppComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClickItem = this.handleClickItem.bind(this);
+  }
+
+  handleClickItem(news) {
+    console.log(news);
+  }
+
   render() {
 
     return (
       <div className='wrapper'>
         <h1>Trang tin VinaEnter Edu</h1>
         <ul>
-          {listNews.map(function (news) {
-            return (
-              <li>
-                <a href="javascript:void(0)" onClick={() => alert(news.title)}><img src={news.img} alt={news.img} /></a>
-                <div className="khoiphai">
-                  <h2><a href="#">{news.title}</a></h2>
-                  <p>{news.content}</p>
-                </div>
-                <div className="clr"></div>
-              </li>
-            )
-          })}
+          {listNews.map((news, idx) =>
+            <li key={idx}>
+              <a href="javascript:void(0)" onClick={() => this.handleClickItem(news)}><img src={news.img} alt={news.img} /></a>
+              <div className="khoiphai">
+                <h2><a href="#">{news.title}</a></h2>
+                <p>{news.content}</p>
+              </div>
+              <div className="clr"></div>
+            </li>
+          )}
         </ul>
       </div>
     )
   }
 }
 
-ReactDOM.render(<AppComponent />, document.getElementById("root"))
+// ReactDOM.render(<AppComponent />, document.getElementById("root"))
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <AppComponent listNews={listNews} />
+  </React.StrictMode>
+);
