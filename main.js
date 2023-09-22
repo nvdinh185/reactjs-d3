@@ -4,6 +4,8 @@ class AppComponent extends React.Component {
     this.state = {
       validCD: '',
       validCR: '',
+      chieuDai: '',
+      chieuRong: '',
       chuVi: '',
       dienTich: ''
     };
@@ -25,6 +27,8 @@ class AppComponent extends React.Component {
     var chieuRong = Number(formValue['chieurong']);
     if (chieuDai && chieuRong) {
       this.setState({
+        chieuDai: '',
+        chieuRong: '',
         chuVi: (chieuDai + chieuRong) * 2,
         dienTich: chieuDai * chieuRong
       });
@@ -78,16 +82,18 @@ class AppComponent extends React.Component {
 
     return (
       <>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
           <div>
             <label>Chiều dài</label>
-            <input onBlur={this.handleBlur} onInput={this.handleInput} type="text" name="chieudai" />
+            <input onBlur={(e) => this.handleBlur(e)} onInput={(e) => this.handleInput(e)} type="text"
+              name="chieudai" value={this.state.chieuDai} onChange={(e) => { this.setState({ chieuDai: e.target.value }) }} />
             <span>{this.state.validCD}</span>
           </div>
           <br />
           <div>
             <label>Chiều rộng</label>
-            <input onBlur={this.handleBlur} onInput={this.handleInput} type="text" name="chieurong" />
+            <input onBlur={(e) => this.handleBlur(e)} onInput={(e) => this.handleInput(e)} type="text"
+              name="chieurong" value={this.state.chieuRong} onChange={(e) => { this.setState({ chieuRong: e.target.value }) }} />
             <span>{this.state.validCR}</span>
           </div>
           <input type="submit" value="Tinh" />
