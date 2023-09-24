@@ -87,14 +87,20 @@ class AppComponent extends React.Component {
             <label>Chiều dài</label>
             <input onBlur={(e) => this.handleBlur(e)} onInput={(e) => this.handleInput(e)} type="text"
               name="chieudai" value={this.state.chieuDai} onChange={(e) => { this.setState({ chieuDai: e.target.value }) }} />
-            <span>{this.state.validCD}</span>
+            <span style={{
+              color: 'red',
+              fontStyle: 'italic'
+            }}>{this.state.validCD}</span>
           </div>
           <br />
           <div>
             <label>Chiều rộng</label>
             <input onBlur={(e) => this.handleBlur(e)} onInput={(e) => this.handleInput(e)} type="text"
               name="chieurong" value={this.state.chieuRong} onChange={(e) => { this.setState({ chieuRong: e.target.value }) }} />
-            <span>{this.state.validCR}</span>
+            <span style={{
+              color: 'red',
+              fontStyle: 'italic'
+            }}>{this.state.validCR}</span>
           </div>
           <input type="submit" value="Tinh" />
         </form>
