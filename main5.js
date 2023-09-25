@@ -47,8 +47,6 @@ function AppComponent(props) {
     console.log(news);
   }
 
-  // render() {
-
   return (
     <div className='wrapper'>
       <h1>Trang tin VinaEnter Edu</h1>
@@ -65,7 +63,6 @@ function AppComponent(props) {
       </ul>
     </div>
   )
-  // }
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
