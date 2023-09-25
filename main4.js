@@ -8,14 +8,14 @@ class PostItem extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.props.onClickItem(e);
+    this.props.onClickItem();
   }
 
   render() {
     var urlPic = `images/${this.props.img}`;
     return (
       <li>
-        <a href='#' onClick={(e) => this.handleClick(e)}><img src={urlPic} alt={this.props.img} /></a>
+        <a href='https://www.google.com/' onClick={(e) => this.handleClick(e)}><img src={urlPic} alt={this.props.img} /></a>
         <div className="khoiphai">
           <h2><a href="#">{this.props.title}</a></h2>
           <p>{this.props.content}</p>

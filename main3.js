@@ -26,8 +26,9 @@ class AppComponent extends React.Component {
     this.handleClickItem = this.handleClickItem.bind(this);
   }
 
-  handleClickItem(news) {
-    console.log(news);
+  handleClickItem(e, news) {
+    e.preventDefault();
+    alert(news.title);
   }
 
   render() {
@@ -38,7 +39,7 @@ class AppComponent extends React.Component {
         <ul>
           {listNews.map((news, idx) =>
             <li key={idx}>
-              <a href="javascript:void(0)" onClick={() => this.handleClickItem(news)}><img src={news.img} alt={news.img} /></a>
+              <a href='https://www.google.com/' onClick={(e) => this.handleClickItem(e, news)}><img src={news.img} alt={news.img} /></a>
               <div className="khoiphai">
                 <h2><a href="#">{news.title}</a></h2>
                 <p>{news.content}</p>

@@ -14,6 +14,7 @@ class AppComponent extends React.Component {
 
     return (
       <div className='wrapper'>
+        <button onClick={() => console.log('Hello World!')}>Click me!</button>
         <div className='posts-list'>
           <PostItem />
           <PostItem />
@@ -24,4 +25,22 @@ class AppComponent extends React.Component {
   }
 }
 
-ReactDOM.render(<AppComponent />, document.getElementById("root"))
+function App() {
+
+  const handleClick = () => {
+    alert('You clicked!!!');
+  }
+
+  function handleClick2() {
+    alert('You clicked too!!!');
+  }
+
+  return (
+    <div className='wrapper'>
+      <button onClick={() => handleClick()}>Click me!</button>
+      <button onClick={() => handleClick2()}>Click me too!</button>
+    </div>
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById("root"))
