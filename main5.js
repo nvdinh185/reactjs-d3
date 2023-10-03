@@ -5,11 +5,10 @@ function PostItem(props) {
     props.onClickItem(title);
   }
 
-  var urlPic = `images/${props.img}`;
   return (
     <li>
       <a href='https://www.google.com/' onClick={(e) => handleClick(e, props.title)}>
-        <img src={urlPic} alt={props.img} /></a>
+        <img src={"images/" + props.img} alt={props.img} /></a>
       <div className="khoiphai">
         <h2><a href="#">{props.title}</a></h2>
         <p>{props.content}</p>
